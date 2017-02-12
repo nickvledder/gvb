@@ -1,2 +1,0 @@
-feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_version
-OVapi,http://www.ovapi.nl,nl,20170212,20171209,5185

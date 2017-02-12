@@ -1,4 +1,5 @@
-gtfs
+gtfs/*
+.pyc
 log.jsons
 *.bin
 .idea
