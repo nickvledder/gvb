@@ -1,7 +1,7 @@
 # ref: https://erikbern.com/2016/04/04/nyc-subway-math.html
 
 from proto import gtfs_realtime_pb2
-import urllib
+import urllib.request
 import time
 import traceback
 from protobuf_to_dict import protobuf_to_dict
@@ -13,7 +13,7 @@ while True:
     try:
 
         feed = gtfs_realtime_pb2.FeedMessage()
-        response = urllib.urlopen('http://gtfs.ovapi.nl/new/vehiclePositions.pb')
+        response = urllib.request.urlopen('http://gtfs.ovapi.nl/new/vehiclePositions.pb')
         vehicles_position = response.read()
 
         with open('vehicles_position.bin', mode='wb') as file_trains:
@@ -27,7 +27,7 @@ while True:
         continue
 
     vehicles = [protobuf_to_dict(entity.vehicle) for entity in feed.entity if entity.HasField('vehicle')]
-    print 'got', len(vehicles), 'vehicles'
+    print('got', len(vehicles), 'vehicles')
 
     f = open('log.jsons', 'a')
     json.dump(vehicles, f)
